@@ -1,4 +1,6 @@
--- Script that creates a trigger that decreases the
--- quantity of an item after adding a new order.
-CREATE TRIGGER decrease_q AFTER INSERT ON orders FOR EACH ROW
-UPDATE items SET quantity = quantity - NEW.number WHERE name=NEW.item_name;
+-- script that lists all bands with Glam rock as their main style, ranked by their longevity
+
+SELECT
+    band_name, (IFNULL(split, 2022) - formed) AS lifespan
+FROM metal_bands
+WHERE style LIKE '%Glam rock%';
